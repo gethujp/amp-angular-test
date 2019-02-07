@@ -1,0 +1,48 @@
+<div class="d-none d-sm-block">
+        <div class="header">Cart Info</div>
+        <div class="row pd-head ">
+            <div class="col-md-2">Option</div>
+            <div class="col-md-2 ">Name</div>
+            <div class="col-md-2">Photo</div>
+            <div class="col-md-2">Price</div>
+            <div class="col-md-2">Quantity</div>
+            <div class="col-md-2">Subtotal</div>
+        </div>
+        <div class="cart-body">
+            <div class="row pd-row" *ngFor="let item of items">
+                <div class="col-md-2"><a (click)="remove(item.product.id)" class="btn btn-danger btn-sm btn-font"><span class="glyphicon glyphicon-remove"></span> Remove </a></div>
+                <div class="col-md-2">{{item.product.name}}</div>
+                <div class="col-md-2"><img src="assets/{{item.product.image}}" width="50"></div> 
+                <div class="col-md-2">${{item.product.price}}</div>
+                <div class="col-md-2">
+                  <input type="number" min="0" max="100"  [(ngModel)]="item.quantity" 
+                  name="item.quantity" (change)="update(item.product.id,item.quantity)">
+                </div>
+                <div class="col-md-2">${{item.product.price * item.quantity}}</div>
+            </div>
+            <div *ngIf="items.length==0" class="emptyCart"> Cart is empty </div>
+        
+        </div>
+        <div class="row  pd-bottom">
+            <div class="col-md-7"></div>
+            <div class="col-md-3 align-self-end">Total Cost</div>
+            <div class="col-md-2 align-self-end">${{total}}</div>
+        </div>
+</div>
+
+<div class="d-sm-none">
+    <div class="header">Cart Info</div>
+    <div class="row mob-cart-row" *ngFor="let item of items" > 
+        <div class="col-md-2"><span>Name : </span> {{item.product.name}}</div>
+        <div class="col-md-2"><span>Price : </span>${{item.product.price}}</div>
+        <div class="col-md-2"><span>Qty : </span><input type="number" min="0" max="100"  [(ngModel)]="item.quantity" 
+            name="item.quantity" (change)="update(item.product.id,item.quantity)"></div>
+        <div class="col-md-2"><a (click)="remove(item.product.id)" class="btn btn-danger btn-sm btn-font"><span class="glyphicon glyphicon-remove"></span> Remove </a></div>
+    </div>
+
+    <div class="row  pd-bottom">
+            <div class="col-xs-6 align-self-end">Total Cost</div>
+            <div class="col-xs-6 align-self-end">${{total}}</div>
+        </div>
+
+</div>

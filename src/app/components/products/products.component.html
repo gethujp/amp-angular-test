@@ -1,0 +1,38 @@
+<div class="container-flexi">
+<div class="row">
+    <div class="col-md-6 col-sm-10">
+    <div class="header">Product List</div>
+
+        <div class="row prod-div">
+        <div class="col-md-11 col-sm-11 prod-list " *ngFor="let product of products">
+            <div class="row ">
+                <div class="col-md-4">
+                        <img class="center" src="assets/{{product.image}}" width="150" height="150"/>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                            <div class="col-md-9 prod-name">{{product.name}}</div>
+                            <div class="price-tag col-md-3" >${{product.price}}</div>
+                            
+                    </div>
+                    <div  class="row">
+                        <div class="col-md-12" > {{product.description}}</div>
+                            
+                    </div>
+                    <div class="row">
+                           <div class="col-md-12 btn-div"> <button class="btn  btn-style" (click)="add(product.id)" >Add to Cart</button></div>
+                    </div>
+                </div>
+
+            </div>        
+            
+        </div>
+    </div>
+    </div>
+    <div class="col-md-5 col-sm-10">
+            <app-cart ></app-cart>
+    </div>
+
+
+</div>
+</div>
